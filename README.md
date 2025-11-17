@@ -1,22 +1,28 @@
-# k1d - Minimalist Portfolio
+# k1d - Interactive Apple Notes Portfolio
 
-A minimalist portfolio website with glassmorphic design, inspired by Apple Notes.
+A minimalist portfolio website inspired by Apple Notes with glassmorphic design and beautiful micro animations.
+
+## Design Philosophy
+
+This portfolio combines the clean simplicity of Apple Notes with interactive glassmorphic elements and storytelling through design. Every element is crafted with attention to micro-interactions, scroll-triggered animations, and smooth transitions.
 
 ## Features
 
-- **Split Layout**: Left side with profile, right side with project cards
-- **Glassmorphic Design**: Backdrop blur effects with subtle borders
-- **Animated Ouroboros**: Rotating SVG logo in the header
-- **3D Hover Effects**: Cards tilt on hover with enhanced glass effect
-- **Dark Mode**: Default dark theme
-- **Smooth Animations**: Framer Motion powered interactions
+- **Apple Notes Aesthetic**: Single-column note-style layout with SF Pro Display typography
+- **Glassmorphic Design**: Enhanced backdrop blur effects with subtle borders and depth
+- **Animated Ouroboros**: Subtly rotating SVG logo symbolizing continuous growth
+- **Micro Animations**: Scroll-triggered reveals, staggered entrances, and smooth transitions
+- **Interactive Elements**: Hover effects, click states, and fluid motion throughout
+- **Note Header**: Time-stamped header with availability status
+- **Highlighted Projects**: Accent indicators for standout achievements
+- **Dark Mode**: Default dark theme matching Apple's design language
 
 ## Tech Stack
 
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- Framer Motion
+- **Next.js 14** (App Router)
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
 
 ## Getting Started
 
@@ -41,14 +47,38 @@ npm start
 
 ## Customization
 
-To update the accent color, modify the `--accent` CSS variable in `app/globals.css`:
+### Accent Color
+Update the `--accent` CSS variable in `app/globals.css`:
 
 ```css
 :root {
-  --accent: 120, 100%, 50%; /* HSL format */
+  --accent: 255, 204, 0; /* RGB format */
 }
 ```
 
-Update social links in `components/ProfileSection.tsx`.
+### Social Links
+Update social links in `app/page.tsx` (socialLinks array)
 
-Update projects in `components/ProjectsGrid.tsx`.
+### Projects
+Update projects in `app/page.tsx` (projects array)
+
+### Color Theme
+Modify color variables in `app/globals.css`:
+```css
+:root {
+  --note-bg: 18, 18, 18;
+  --note-paper: 28, 28, 30;
+  --note-border: 48, 48, 51;
+}
+```
+
+## Components
+
+- `NoteHeader` - Time-stamped header with status indicator
+- `Ouroboros` - Animated SVG logo
+- `AnimatedText` - Scroll-triggered text reveal wrapper
+- `NoteProject` - Glassmorphic project card with micro animations
+
+## Inspiration
+
+Design inspired by [wabi.ai](https://wabi.ai) and [alanagoyal.com](https://www.alanagoyal.com/notes/about-me)

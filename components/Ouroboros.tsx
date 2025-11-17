@@ -8,17 +8,16 @@ export default function Ouroboros() {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1 }}
-      className="mb-8"
     >
       <motion.svg
-        width="120"
-        height="120"
+        width="100"
+        height="100"
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="opacity-80 hover:opacity-100 transition-opacity"
+        className="opacity-70 hover:opacity-100 transition-opacity duration-500"
       >
         {/* Outer circle glow */}
         <circle

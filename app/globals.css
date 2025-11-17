@@ -5,7 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --accent: 120, 100%, 50%;
+  --accent: 255, 204, 0;
+  --note-bg: 18, 18, 18;
+  --note-paper: 28, 28, 30;
+  --note-border: 48, 48, 51;
 }
 
 * {
@@ -19,37 +22,147 @@ html {
 }
 
 body {
-  @apply bg-black text-white antialiased;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  @apply antialiased;
+  background: rgb(var(--note-bg));
+  color: rgba(255, 255, 255, 0.9);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Apple style */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-transparent;
+  background: rgb(var(--note-bg));
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid rgb(var(--note-bg));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-white/20;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Note paper effect */
+.note-paper {
+  background: rgb(var(--note-paper));
+  border: 1px solid rgb(var(--note-border));
+  border-radius: 12px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Glassmorphic utilities */
 .glass {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .glass-hover {
-  @apply transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Accent gradient */
+.accent-glow {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent), 0.1) 0%,
+    rgba(var(--accent), 0.05) 50%,
+    transparent 100%
+  );
+}
+
+/* Text selection */
+::selection {
+  background: rgba(var(--accent), 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(var(--accent), 0.3);
+  color: white;
 }
 
 /* Smooth transitions */
 * {
-  @apply transition-colors duration-200;
+  transition-property: background-color, border-color, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+/* Cursor effects */
+@media (hover: hover) {
+  .cursor-interact {
+    cursor: pointer;
+  }
+
+  .cursor-interact:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
 }
